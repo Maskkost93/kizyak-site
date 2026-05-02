@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>КIЗЯК VPN — твой сочный проводник в мир большого интернета 🥭</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #f0f3fa;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      position: relative;
+    }
+
+    /* яркий сочный фон с манго-вставками и текстурой */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.pexels.com/photos/6645939/pexels-photo-6645939.jpeg?auto=compress&cs=tinysrgb&w=1600');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(255, 190, 70, 0.08), rgba(10, 12, 18, 0.92));
+      z-index: -1;
+    }
+
+    /* кастомный скролл */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e1f2a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f9a825;
+      border-radius: 20px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.8rem;
+    }
+
+    /* хедер */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .logo {
+      font-size: 3.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFD966, #FFB347);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .logo i {
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      color: #ffb347;
+      font-size: 3rem;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      background: rgba(255, 180, 70, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      margin-top: 1rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 180, 70, 0.4);
+    }
+
+    /* сетка карточек */
+    .grid-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* центрирует карточки по горизонтали */
+      gap: 1.8rem;
+      margin: 3rem 0 4rem;
+    }
+    .feature-card {
+      background: rgba(18, 20, 28, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 1.8rem;
+      transition: all 0.25s ease;
+      border: 1px solid rgba(255, 180, 70, 0.25);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      flex: 0 1 280px;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: #ffb347;
+      background: rgba(25, 28, 38, 0.85);
+      box-shadow: 0 20px 30px -12px rgba(255, 160, 50, 0.2);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #FFB347;
+      margin-bottom: 1rem;
+    }
+    .feature-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+    .feature-card p {
+      color: #cdd9ff;
+      font-size: 0.95rem;
+    }
+
+    /* раздел с клиентами */
+    .clients-section {
+      background: rgba(10, 12, 22, 0.6);
+      backdrop-filter: blur(16px);
+      border-radius: 2.5rem;
+      padding: 2rem 2rem 2.5rem;
+      margin: 3rem 0 3rem;
+      border: 1px solid rgba(255, 190, 80, 0.3);
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title i {
+      color: #ffb347;
+      font-size: 2rem;
+    }
+    .client-sub {
+      color: #a9b7e8;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      border-left: 3px solid #ffb347;
+      padding-left: 1rem;
+    }
+    .clients-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+    }
+    .client-btn {
+      background: linear-gradient(105deg, #242a36, #1a1e2a);
+      border: none;
+      border-radius: 60px;
+      padding: 0.9rem 1.9rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #ffefcf;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 180, 70, 0.5);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    }
+    .client-btn i {
+      font-size: 1.4rem;
+      color: #ffb347;
+    }
+    .client-btn:hover {
+      transform: scale(1.02);
+      background: #2f3648;
+      border-color: #ffb347;
+      box-shadow: 0 8px 18px rgba(255, 170, 50, 0.3);
+    }
+    .connect-hint {
+      margin-top: 2rem;
+      background: #00000055;
+      border-radius: 2rem;
+      padding: 1rem 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-family: monospace;
+      word-break: break-all;
+    }
+    .telegram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #1e293b;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      transition: 0.2s;
+      margin-top: 0.5rem;
+      color: #ffcd7e;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .telegram-link:hover {
+      background: #2d3a4e;
+      color: white;
+    }
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .faq-item {
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      border-radius: 1.5rem;
+      padding: 1.4rem;
+      border-left: 3px solid #ffb347;
+    }
+    .faq-question {
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 8px;
+    }
+    .faq-answer {
+      color: #cbd5ff;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid rgba(255,195,100,0.3);
+      font-size: 0.85rem;
+    }
+    /* модальное окно для инструкций */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-card {
+      background: #141824e6;
+      backdrop-filter: blur(20px);
+      max-width: 480px;
+      width: 90%;
+      border-radius: 2rem;
+      padding: 2rem;
+      border: 1px solid #ffb347;
+      text-align: center;
+      animation: fadeInUp 0.2s ease;
+    }
+    .modal-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .modal-card p {
+      margin: 1rem 0;
+    }
+    .close-modal {
+      background: #ffb347;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 3rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+      color: #0a0c12;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .btn-primary {
+      background: #ffb347;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #131825;
+      transition: 0.2s;
+      cursor: pointer;
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-primary:hover {
+      background: #ff9f20;
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(255,160,40,0.4);
+    }
+    a {
+      text-decoration: none;
+    }
+    @media (max-width: 650px) {
+      .container {
+        padding: 1.2rem;
+      }
+      .logo {
+        font-size: 2.4rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Hero -->
+  <div class="hero">
+    <div class="logo">
+      <i class="fas fa-mango"></i>
+      <span>КIЗЯК VPN</span>
+      <i class="fas fa-bolt"></i>
+    </div>
+    <div class="tagline">
+      🥭 Твой сочный проводник в мир свободного интернета! 🔥
+    </div>
+    <p style="max-width: 650px; margin-top: 1.5rem; font-size: 1.1rem;">
+      Надоело "соединение..." в телеграмме? Бесят баннеры "адрес не найден"?
+      Мы просто убираем все БС и ЧС в сторонку, чтобы ты получал свой интернет без вопросов.
+    </p>
+  </div>
+
+  <!-- фишки -->
+  <div class="grid-features">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+      <h3>Огонь-скорость</h3>
+      <p>Серверы заточены под игры — забудь про лаги и высокий пинг. Пакеты летят быстрее звука! 🔥</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-gift"></i></div>
+      <h3>Бесплатно навсегда</h3>
+      <p>Никаких подписок и триалов. Только спелое манго и чистый исходный код. 🥭</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-shield"></i></div>
+      <h3>Ломаем стены</h3>
+      <p>Соцсети под санкциями? Заблокированные игры? КIЗЯК всё обойдет. 💪</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-eye-slash"></i></div>
+      <h3>Нам всё равно на ЧС</h3>
+      <p>Обходим чёрные списки, словно их и не было. Интернет без ограничений!</p>
+    </div>
+  </div>
+
+  <!-- раздел подключения с клиентами (v2rayNG, Happ и т.д.) -->
+  <div class="clients-section" id="connect">
+    <div class="section-title">
+      <i class="fas fa-plug"></i>
+      <span>Подключи КIЗЯК на любом устройстве</span>
+    </div>
+    <div class="client-sub">
+      <i class="fas fa-mobile-alt"></i> Выбери свой клиент, добавь подписку — и ты в сети!
+    </div>
+    <div class="clients-grid">
+      <!-- кнопки клиентов с модальными инструкциями -->
+      <button class="client-btn" data-client="v2rayNG"><i class="fab fa-android"></i> v2rayNG (Android)</button>
+      <button class="client-btn" data-client="Happ"><i class="fas fa-smile-wink"></i> Happ (Android/iOS)</button>
+      <button class="client-btn" data-client="Karing"><i class="fas fa-cloud-upload-alt"></i> Karing (Android/iOS)</button>
+      <button class="client-btn" data-client="V2BOX"><i class="fas fa-box"></i> V2BOX (Android)</button>
+      <button class="client-btn" data-client="v2rayA"><i class="fab fa-linux"></i> v2rayA (Linux)</button>
+    </div>
+    <div class="connect-hint">
+      🔗 Актуальные конфигурации и ссылка для подключения провайдера VPN в нашем телеграм-канале 👇 <br/>
+      <a href="https://t.me/+KLYYc-t388QwOTEy" target="_blank" class="telegram-link">
+        <i class="fab fa-telegram-plane"></i> @kizyak_vpn_channel
+        <i class="fas fa-arrow-right"></i>
+      </a>
+      <div style="margin-top: 12px; font-size: 0.85rem;">
+        <i class="fas fa-info-circle"></i> После подписки скопируй ссылку и вставь в клиент → наслаждайся свободой.
+      </div>
+    </div>
+  </div>
+
+  <!-- Совместимость компактная -->
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; background: #0b0e16aa; border-radius: 2rem; padding: 1rem 1.8rem; margin: 1rem 0;">
+    <a href="https://github.com/2dust/v2rayNG/releases/download/2.0.18/v2rayNG_2.0.18_universal.apk" target="_blank" style="text-decoration: none; color: inherit;"><span><i class="fab fa-android"></i> Android</span></a>
+    <a href="https://github.com/Happ-proxy/happ-desktop/releases/download/2.9.1/setup-Happ.x64.exe" target="_blank" style="text-decoration: none; color: inherit;"><span><i class="fab fa-windows"></i> Windows</span></a>
+    <a href="https://apps.apple.com/ru/app/karing/id6472431552" target="_blank" style="text-decoration: none; color: inherit;"><span><i class="fab fa-apple"></i> iOS</span></a>
+    <a href="https://v2raya.org/en/" target="_blank" style="text-decoration: none; color: inherit;"><span><i class="fab fa-linux"></i> Linux</span></a>
+  </div>
+
+  <!-- FAQ интерактивный -->
+  <div class="section-title" style="margin-top: 2rem;">
+    <i class="fas fa-question-circle"></i> <span>Часто задаваемые вопросы 🥭</span>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-question"><i class="fas fa-question"></i> А это точно бесплатно?</div>
+      <div class="faq-answer">Да! Кушаем манго из любви к искусству. Хотим, чтобы у всех был свободный интернет. Соохраняем вашу конфиденциальность. Навсегда бесплатно. </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question"><i class="fas fa-ban"></i> Что значит "обход БС и ЧС"?</div>
+      <div class="faq-answer">Белые списки и чёрные списки? КIЗЯК делает так, что ты их просто не замечаешь. Открывай любые сайты или приложения.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question"><i class="fas fa-smile"></i> Почему такое смешное название?</div>
+      <div class="faq-answer">А почему нет? Работает как швейцарские часы, а не тормозит. Запоминается легко 🥭</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question"><i class="fas fa-tachometer-alt"></i> Где брать обновления серверов?</div>
+      <div class="faq-answer">В нашем Telegram-канале: свежие серверы, обновления и просто прикольный контент. Ссылка ниже!</div>
+    </div>
+  </div>
+
+  <!-- блок дополнительный: ссылки и кнопка "Присоединиться" -->
+  <div style="text-align: center; margin: 2.5rem 0 1rem;">
+    <a href="https://t.me/+KLYYc-t388QwOTEy" target="_blank">
+      <button class="btn-primary"><i class="fab fa-telegram"></i> Забрать подписку КIЗЯК VPN</button>
+    </a>
+    <a href="https://github.com/Maskkost93/kizyak-vpn-4.0" target="_blank">
+      <button class="btn-primary"><i class="fab fa-github"></i> Посетить Github проект КIЗЯК VPN</button>
+    </a>
+    <p style="margin-top: 15px; font-size: 0.85rem;">Релиз 7.1 · Релиз 6.6 · свежие коммиты каждый день</p>
+  </div>
+
+  <div class="footer">
+    <p><i class="far fa-copyright"></i> КIЗЯК VPN — твой защищенный бесплатный VPN. Работает на базе VLESS, Reality, Hysteria. Спасибо igareck/vpn-configs-for-russia за вдохновение.</p>
+    <p style="margin-top: 8px;">✨ Обходим любые блокировки | Мгновенное подключение | Без рекламы и лагов</p>
+  </div>
+</div>
+
+<!-- Модальное окно для быстрого показа инструкции -->
+<div id="clientModal" class="modal">
+  <div class="modal-card">
+    <h3><i class="fas fa-wifi"></i> <span id="modalClientName"></span></h3>
+    <p>🥭 <strong>Как подключить КIЗЯК VPN через <span id="modalClientNameSpan"></span>?</strong></p>
+    <p>1. Скачай приложение <span id="clientAppName"></span> из официального магазина.<br>
+    2. Перейди в наш Telegram → нажми по закрепленному сообщению и нажми на ссылку для клиента <span id="clientAppName"></span>.<br>
+    3. Тебя перекинет в <span id="clientAppName"></span> с уже установленным профилем.<br>
+    4. Перезапусти <span id="clientAppName"></span> и наслаждайся свободным интернетом 🚀</p>
+    <p><i class="fab fa-telegram"></i> <strong>Ссылка на наш ТГ:</strong> <a href="https://t.me/+KLYYc-t388QwOTEy" target="_blank" style="color: #ffb347;">t.me/kizyak_vpn</a></p>
+    <p>↓</p>
+    <a href="https://t.me/+KLYYc-t388QwOTEy" target="_blank" class="close-modal">
+      <i class="fas fa-check"></i> Понятно, погнали
+    </a>
+  </div>
+</div>
+
+<script>
+  // детали для каждого клиента — чтобы сделать раздел еще более интерактивным
+  const clientsInfo = {
+    v2rayNG: { fullName: "v2rayNG (Android)", appStore: "Google Play / GitHub" },
+    Happ: { fullName: "Happ (Android / iOS)", appStore: "App Store / Google Play" },
+    Karing: { fullName: "Karing (iOS / Android)", appStore: "TestFlight / GitHub" },
+    Hiddify: { fullName: "Hiddify (Windows / Linux / Mac)", appStore: "Официальный сайт" },
+    V2BOX: { fullName: "V2BOX (Android)", appStore: "App Store" },
+    v2rayA: { fullName: "v2rayA (Linux)", appStore: "GitHub + Docker" }
+  };
+
+  const modal = document.getElementById('clientModal');
+  const modalClientNameSpan = document.getElementById('modalClientNameSpan');
+  const clientAppNameSpan = document.getElementById('clientAppName');
+  const modalClientNameHeader = document.getElementById('modalClientName');
+
+  // открываем модалку с нужными данными
+  function showClientModal(clientKey) {
+    const info = clientsInfo[clientKey];
+    if (!info) return;
+    modalClientNameHeader.innerText = info.fullName;
+    modalClientNameSpan.innerText = clientKey;
+    clientAppNameSpan.innerText = info.fullName;
+    modal.style.display = 'flex';
+  }
+
+  // назначаем обработчики
+  document.querySelectorAll('.client-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const client = btn.getAttribute('data-client');
+      if (client) showClientModal(client);
+    });
+  });
+
+  // закрытие модалки
+  document.querySelector('.close-modal').addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+  });
+
+  // дополнительно: красивое всплытие ссылок — можно скопировать адрес канала
+  console.log("🥭 КIЗЯК VPN – обход блокировок без БС и ЧС!");
+</script>
+
+</body>
+</html>
