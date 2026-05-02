@@ -23,7 +23,7 @@
       position: relative;
     }
 
-    /* яркий сочный фон с манго-вставками и текстурой */
+
     body::before {
       content: "";
       position: fixed;
@@ -50,7 +50,7 @@
       z-index: -1;
     }
 
-    /* кастомный скролл */
+
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -68,7 +68,7 @@
       padding: 2rem 1.8rem;
     }
 
-    /* хедер */
+
     .hero {
       display: flex;
       flex-direction: column;
@@ -109,7 +109,7 @@
       border: 1px solid rgba(255, 180, 70, 0.4);
     }
 
-    /* сетка карточек */
+
     .grid-features {
       display: flex;
       flex-wrap: wrap;
@@ -148,7 +148,7 @@
       font-size: 0.95rem;
     }
 
-    /* раздел с клиентами */
+
     .clients-section {
       background: rgba(10, 12, 22, 0.6);
       backdrop-filter: blur(16px);
@@ -236,7 +236,7 @@
       background: #2d3a4e;
       color: white;
     }
-    /* FAQ */
+
     .faq-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -267,7 +267,7 @@
       border-top: 1px solid rgba(255,195,100,0.3);
       font-size: 0.85rem;
     }
-    /* модальное окно для инструкций */
+
     .modal {
       display: none;
       position: fixed;
@@ -356,7 +356,7 @@
 <body>
 
 <div class="container">
-  <!-- Hero -->
+
   <div class="hero">
     <div class="logo">
       <i class="fas fa-mango"></i>
@@ -372,7 +372,7 @@
     </p>
   </div>
 
-  <!-- фишки -->
+
   <div class="grid-features">
     <div class="feature-card">
       <div class="feature-icon"><i class="fas fa-rocket"></i></div>
@@ -396,7 +396,7 @@
     </div>
   </div>
 
-  <!-- раздел подключения с клиентами (v2rayNG, Happ и т.д.) -->
+
   <div class="clients-section" id="connect">
     <div class="section-title">
       <i class="fas fa-plug"></i>
@@ -406,7 +406,7 @@
       <i class="fas fa-mobile-alt"></i> Выбери свой клиент, добавь подписку — и ты в сети!
     </div>
     <div class="clients-grid">
-      <!-- кнопки клиентов с модальными инструкциями -->
+
       <button class="client-btn" data-client="v2rayNG"><i class="fab fa-android"></i> v2rayNG (Android)</button>
       <button class="client-btn" data-client="Happ"><i class="fas fa-smile-wink"></i> Happ (Android/iOS)</button>
       <button class="client-btn" data-client="Karing"><i class="fas fa-cloud-upload-alt"></i> Karing (Android/iOS)</button>
@@ -425,7 +425,7 @@
     </div>
   </div>
 
-  <!-- Совместимость компактная -->
+
   <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; background: #0b0e16aa; border-radius: 2rem; padding: 1rem 1.8rem; margin: 1rem 0;">
     <a href="https://github.com/2dust/v2rayNG/releases/download/2.0.18/v2rayNG_2.0.18_universal.apk" target="_blank" style="text-decoration: none; color: inherit;"><span><i class="fab fa-android"></i> Android</span></a>
     <a href="https://github.com/Happ-proxy/happ-desktop/releases/download/2.9.1/setup-Happ.x64.exe" target="_blank" style="text-decoration: none; color: inherit;"><span><i class="fab fa-windows"></i> Windows</span></a>
@@ -433,7 +433,7 @@
     <a href="https://v2raya.org/en/" target="_blank" style="text-decoration: none; color: inherit;"><span><i class="fab fa-linux"></i> Linux</span></a>
   </div>
 
-  <!-- FAQ интерактивный -->
+
   <div class="section-title" style="margin-top: 2rem;">
     <i class="fas fa-question-circle"></i> <span>Часто задаваемые вопросы 🥭</span>
   </div>
@@ -456,7 +456,7 @@
     </div>
   </div>
 
-  <!-- блок дополнительный: ссылки и кнопка "Присоединиться" -->
+
   <div style="text-align: center; margin: 2.5rem 0 1rem;">
     <a href="https://t.me/+KLYYc-t388QwOTEy" target="_blank">
       <button class="btn-primary"><i class="fab fa-telegram"></i> Забрать подписку КIЗЯК VPN</button>
@@ -473,7 +473,7 @@
   </div>
 </div>
 
-<!-- Модальное окно для быстрого показа инструкции -->
+
 <div id="clientModal" class="modal">
   <div class="modal-card">
     <h3><i class="fas fa-wifi"></i> <span id="modalClientName"></span></h3>
